@@ -1,39 +1,22 @@
 import React, { Component } from "react";
-import { Timer } from "react-native-stopwatch-timer";
+
+import CountDown from "react-native-countdown-component";
+import styles from "./style";
 
 class GameTimer extends Component {
-  state = {
-    isTimerStart: true,
-
-    timerDuration: 90000,
-    resetTimer: false
-  };
-
   render() {
     return (
-      <Timer
-        totalDuration={this.state.timerDuration}
-        secs
-        //Time Duration
-        start={this.state.isTimerStart}
-        //To start
-        reset={this.state.resetTimer}
-        //To reset
-        options={options}
+      <CountDown
+        until={60 * 2}
+        size={13}
+        onFinish={() => alert("Finished")}
+        digitStyle={{ backgroundColor: "#FFF" }}
+        timeToShow={["M", "S"]}
+        timeLabels={{ m: "", s: "" }}
+        style={styles.timerPosition}
       />
     );
   }
 }
 
 export default GameTimer;
-
-const options = {
-  container: {
-    position: "absolute",
-    top: 275,
-    padding: 5,
-    borderRadius: 5,
-    width: 200,
-    alignItems: "center"
-  }
-};
